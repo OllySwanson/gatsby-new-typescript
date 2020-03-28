@@ -1,16 +1,24 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Typescript Starter`,
-    description: `Kick off your next, great Gatsby project with this default typescript starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Typescript Starter`,
+    description: `Typescript starter for Gatsby`,
     author: `Olly Swanson`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-styled-components",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "starter",
+        path: `${__dirname}/content/starter`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -26,6 +34,29 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    "gatsby-transformer-remark",
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `types/graphql-types.ts`,
+        documentPaths: [
+          "./src/**/*.{ts,tsx}",
+          "./node_modules/gatsby-*/**/*.js",
+        ],
+        codegenDelay: 200,
+        pluckConfig: {
+          // this is the default config
+          globalGqlIdentifierName: "graphql",
+          modules: [{ name: "gatsby", identifier: "graphql" }],
+        },
       },
     },
 

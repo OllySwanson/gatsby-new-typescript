@@ -4,19 +4,9 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-type SecondPageProps = {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string
-      }
-    }
-  }
-}
-
-const SecondPage: React.FC<SecondPageProps> = ({ data }) => {
+const SecondPage: React.FC = () => {
   return (
-    <Layout title={data.site.siteMetadata.title}>
+    <Layout>
       <SEO title="Page two" />
       <h1>Hi from the second page</h1>
       <p>Welcome to page 2</p>
@@ -26,13 +16,3 @@ const SecondPage: React.FC<SecondPageProps> = ({ data }) => {
 }
 
 export default SecondPage
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
