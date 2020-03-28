@@ -53,7 +53,7 @@ const StyledNav = styled.nav`
     margin-left: ${rhythm(1)};
     color: ${props => props.theme.colors.gray};
     &:hover {
-      color: ${props => props.theme.colors.condesign_red};
+      color: ${props => props.theme.colors.red};
     }
   }
 `
